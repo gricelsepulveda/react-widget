@@ -5,10 +5,9 @@ interface HomeProps {
 }
 
 const Home:React.FunctionComponent<HomeProps> = (props) => {
-  console.log(props.config)
   return (
     <div>
-      Hola mundo si llego aca es porque consumo props desde el widget
+      Hola mundo si llego aca es porque consumo props desde el widget {props.config.config}
     </div>
   )
 }
