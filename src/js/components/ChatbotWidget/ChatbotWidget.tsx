@@ -3,6 +3,11 @@ import React, {useState, useEffect, useRef} from "react"
 import TreeList from '../TreeList/TreeList'
 // @ts-ignore
 import Uploader from '../Uploader/Uploader'
+// @ts-ignore
+import colorConversion from "./colorConversion"
+// @ts-ignore
+import treeDataExample  from "./treeDataExample"
+
 import "./chatbot-widget.scss"
 
 export interface ChatbotWidgetProps {
@@ -245,139 +250,6 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     }
   ])
 
-  const treeDummie = [
-    {
-      name: "Lorem ipsum",
-      value:  "",
-      childrens: [
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        }
-      ]
-    },
-    {
-      name: "Lorem ipsum",
-      value:  "",
-      childrens: [
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        }
-      ]
-    },
-    {
-      name: "Lorem ipsum",
-      value:  "",
-      childrens: [
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        }
-      ]
-    },
-    {
-      name: "Lorem ipsum",
-      value:  "",
-      childrens: [
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        }
-      ]
-    },
-    {
-      name: "Lorem ipsum",
-      value:  "",
-      childrens: [
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        },
-        {
-          name: "lorem ipsum:",
-          value:  "",
-          childrens: []
-        }
-      ]
-    }
-  ]
-
 
   const handleActive = () => {
     setLastSeen(Math.trunc(new Date().getTime() / 1000))
@@ -493,53 +365,6 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     setErrorsUpload([])
   }
 
-  const hexToHSL = (H:string, a:number) => {
-    // Convert hex to RGB first
-    let r:any = 0
-    let g:any = 0
-    let b:any = 0
-    if (H.length == 4) {
-      r = "0x" + H[1] + H[1]
-      g = "0x" + H[2] + H[2]
-      b = "0x" + H[3] + H[3]
-    } else if (H.length == 7) {
-      r = "0x" + H[1] + H[2]
-      g = "0x" + H[3] + H[4]
-      b = "0x" + H[5] + H[6]
-    }
-    // Then to HSL
-    r /= 255;
-    g /= 255;
-    b /= 255;
-    let cmin = Math.min(r,g,b),
-        cmax = Math.max(r,g,b),
-        delta = cmax - cmin,
-        h = 0,
-        s = 0,
-        l = 0;
-  
-    if (delta == 0)
-      h = 0;
-    else if (cmax == r)
-      h = ((g - b) / delta) % 6
-    else if (cmax == g)
-      h = (b - r) / delta + 2
-    else
-      h = (r - g) / delta + 4
-  
-    h = Math.round(h * 60)
-  
-    if (h < 0)
-      h += 360
-  
-    l = (cmax + cmin) / 2
-    s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1))
-    s = +(s * 100).toFixed(1)
-    l = +(l * 100).toFixed(1)
-
-    return `hsla(${h},${s}%,${l}%,${a})`
-  }
-
   const generateTxt = () => {
     let _messages:string[] = []
     messages.map((m) => {
@@ -570,8 +395,6 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     }
     open ? handleActive() : null
   }, [props.open, open, messages.length, userTextbox.current != null ? userTextbox.current.value : null])
-
-  console.log(emoji)
 
   const renderEmojiBar = () => {
     let emojis:any[] = []
@@ -627,8 +450,8 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     ]
     for (let i = 1; i <= 34; i++){
       emojis.push(
-        <div className="gc-chw-emoji" onClick={() => handleEmoji(emojiDictionary[i] != undefined ? emojiDictionary[i].utf : '')} title={emojiDictionary[i] != undefined ? emojiDictionary[i].utf : ''} key={`gc-chw-emoji-${emojiDictionary[i] != undefined ? emojiDictionary[i].string : ''}-${i}`}>
-          <i className={`gc-font emoji-${i}`} title={emojiDictionary[i] != undefined ? emojiDictionary[i].utf : ''}></i>
+        <div className="gc-chw-emoji" style={{backgroundColor: `#${props.colors[10]}`}} onClick={() => handleEmoji(emojiDictionary[i] != undefined ? emojiDictionary[i].utf : '')} title={emojiDictionary[i] != undefined ? emojiDictionary[i].utf : ''} key={`gc-chw-emoji-${emojiDictionary[i] != undefined ? emojiDictionary[i].string : ''}-${i}`}>
+          <i style={{color: `#${props.colors[5]}`}} className={`gc-font emoji-${i}`} title={emojiDictionary[i] != undefined ? emojiDictionary[i].utf : ''}></i>
         </div>
       )
     }
@@ -730,7 +553,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
       <div className={`gc-chw-popover shortcut ${openShortcut ? "open": ""}`}>
         <div className="gc-chw-popover-wrapper">
           <h1>Atajos:</h1>
-          <TreeList data={treeDummie} onclick_button={() => alert('text')}/>
+          <TreeList data={treeDataExample} onclick_button={() => alert('text')}/>
         </div>
       </div>
     )
@@ -744,6 +567,8 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
         <div 
           className="gc-chw-dialog-avatar"
           style={{
+            color: props.colors[2],
+            border: `3px solid #${props.colors[5]}`,
             backgroundImage: user == 'bot' ? `url(${props.avatar})` : '',
             opacity: writting == false ? 1 : 0
           }}
@@ -759,12 +584,12 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
           style={{
             backgroundColor: user == 'bot' 
                                   ? seen 
-                                    ? hexToHSL(`#${props.colors[0]}`, 1)
-                                    : hexToHSL(`#${props.colors[0]}`, 0.85)
+                                    ? colorConversion(`#${props.colors[5]}`, 1)
+                                    : colorConversion(`#${props.colors[5]}`, 0.85)
                                   : 
                                     seen 
-                                    ? hexToHSL(`#${props.colors[5]}`, 1)
-                                    : hexToHSL(`#${props.colors[5]}`, 0.25)
+                                    ? colorConversion(`#${props.colors[5]}`, 1)
+                                    : colorConversion(`#${props.colors[5]}`, 0.85)
           }}
         >
           <p>
@@ -984,18 +809,19 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
               }
               </div>
               {/* Prompt */}
-              <div className="gc-chw-prompt-wrapper">
+              <div className="gc-chw-prompt-wrapper" style={{borderLeft: `10px solid #${props.colors[5]}`, borderRight: `51px solid #${props.colors[5]}`, borderTop: `10px solid #${props.colors[5]}`, backgroundColor: `#${props.colors[9]}`}}>
               <div className="gc-chw-prompt-input-wrapper" ref={userTextboxWrapper}>
-                <button className="gc-chw-btn prompt emoji" onClick={()=> setOpenEmoji(!openEmoji)}>
-                  <i className="gc-font emoji-1"/>
+                <button className="gc-chw-btn prompt emoji" style={{color: `#${props.colors[6]}`, backgroundColor: `#${props.colors[9]}`}} onClick={()=> setOpenEmoji(!openEmoji)}>
+                  <i className="gc-font emoji-1" style={{color: `#${props.colors[6]}`}}/>
                 </button>
                 <textarea onKeyPressCapture={handleUserWritting} ref={userTextbox} className="gc-chw-prompt-input">
                 </textarea>
-                <button className="gc-chw-btn prompt attach" onClick={()=> setOpenUpload(!openUpload)}>
-                  <i className="gc-font _attach"/>
+                <button className="gc-chw-btn prompt attach" style={{color: `#${props.colors[6]}`, backgroundColor: `#${props.colors[9]}`}} onClick={()=> setOpenUpload(!openUpload)}>
+                  <i className="gc-font _attach" style={{color: `#${props.colors[6]}`}} />
                 </button>
               </div>
-              <button 
+              <button
+                style={{color: `#${props.colors[9]}`, backgroundColor: `#${props.colors[2]}`}}
                 className={`
                   gc-chw-btn _send 
                   ${ userTextbox.current != null ? userTextbox.current.value == '' ? "disabled" : '' : ''}
@@ -1005,17 +831,17 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                 </button>
               </div>
               {/* Footer */}
-              <div className="gc-chw-footer">
-              <button className="gc-chw-btn footer save labeled" onClick={()=> setOpenDownload(!openDownload)}>
-                <i className="gc-font _save"/>
+              <div className="gc-chw-footer" style={{backgroundColor: `#${props.colors[5]}`}}>
+              <button style={{color: `#${props.colors[6]}`, backgroundColor: `#${props.colors[9]}`}} className="gc-chw-btn footer save labeled" onClick={()=> setOpenDownload(!openDownload)}>
+                <i className="gc-font _save" style={{color: `#${props.colors[6]}`}}/>
                 Guardar
               </button>
-              <button className="gc-chw-btn footer shorcut labeled" onClick={()=> setOpenShortcut(!openShortcut)}>
-                <i className="gc-font flash"/>
+              <button className="gc-chw-btn footer shorcut labeled" style={{color: `#${props.colors[6]}`, backgroundColor: `#${props.colors[9]}`}} onClick={()=> setOpenShortcut(!openShortcut)}>
+                <i className="gc-font flash" style={{color: `#${props.colors[6]}`}}/>
                 Atajos
               </button>
-              <button className="gc-chw-btn footer topic labeled" onClick={()=> setOpenTopics(!openTopics)}>
-                <i className="gc-font _hashtag"/>
+              <button className="gc-chw-btn footer topic labeled" style={{color: `#${props.colors[6]}`, backgroundColor: `#${props.colors[9]}`}} onClick={()=> setOpenTopics(!openTopics)}>
+                <i className="gc-font _hashtag" style={{color: `#${props.colors[6]}`}}/>
                 Tópicos
               </button>
               </div>

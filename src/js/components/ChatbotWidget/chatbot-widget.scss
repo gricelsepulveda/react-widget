@@ -15,14 +15,14 @@
         size: 13px;
         weight: 500;
       }
-      color: $white;
+      color: $gocloud;
       text: {
         align: left;
         transform: uppercase;
       }
       @include flex-row-center;
       cursor: pointer;
-      background-color: $border-darker;
+      background-color: $white;
       border: 0;
       outline: 0;
       &:hover, &:active{
@@ -36,7 +36,7 @@
       .gc-font{
         display: inline-block;
         font-size: 18px;
-        color: $white;
+        color: $gocloud;
       }
       &.labeled{
         padding-left: 8px;
@@ -89,10 +89,16 @@
               &._help{
                 border-radius: 0;
                 background-color: rgba($white, 0.25);
+                .gc-font{
+                  color: $white;
+                }
               }
               &.toggle{
                 background-color: transparent;
                 border-radius: 0;
+                .gc-font{
+                  color: $white;
+                }
               }
             }
           }
@@ -483,21 +489,22 @@
                     display: inline-block;
                     margin-right: 5px;
                     font-size: 18px;
-                    color: $white;
+                    color: lighten($secondary, 20%);
                   }
                   p {
                     @include flex-col-center;
                     align-items: flex-start;
                     justify-content: flex-start;
                     align-content: flex-start;
-                    color: white;
+                    color: lighten($secondary, 20%);
                     text-decoration: underline;
                     font: {
                       size: 12px;
                       weight: 500px;
                     }
                     span {
-                      color: $border;
+                      text-decoration: none!important;
+                      color: $black;
                       font: {
                         style: italic;
                         weight: 400;
@@ -644,7 +651,7 @@
                 size: 13px;
                 weight: 400;
               }
-              color: $white;
+              color: $black;
               text-align: left;
             }
             //Loading...
@@ -741,6 +748,9 @@
             min-width: 36px;
             right: -51px;
             position: relative;
+            .send{
+              color: $white;
+            }
           }
           &.prompt{
             position: absolute;

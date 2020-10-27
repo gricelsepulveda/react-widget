@@ -1,6 +1,6 @@
 import React from "react"
 // @ts-ignore
-import ChatbotWidget from "../js/components/ChatbotWidget/ChatbotWidget"
+import ChatbotWidget from "./components/ChatbotWidget/ChatbotWidget"
 import '../assets/main.scss'
 
 export interface configDef {
@@ -22,7 +22,7 @@ export interface HomeProps {
   config: configDef
 }
 
-const Home:React.FunctionComponent<HomeProps> = (props) => {
+const App:React.FunctionComponent<HomeProps> = (props) => {
   return (
     <ChatbotWidget
         title="Agente conversacional"
@@ -36,7 +36,9 @@ const Home:React.FunctionComponent<HomeProps> = (props) => {
             'd6dbf5',//Border
             '009ada',//Gocloud
             'b7bfe5',//BorderDarker
-            'ffa100'//BorderViolet
+            'ffa100',//BorderViolet
+            'ffffff',//White
+            'ebedfa'//WhiteDark
         ]}
         zIndex={99}
         avatar={"https://gc-general.s3.amazonaws.com/logo-lablab.png"}
@@ -51,4 +53,4 @@ const Home:React.FunctionComponent<HomeProps> = (props) => {
   )
 }
 
-export default Home
+export default App

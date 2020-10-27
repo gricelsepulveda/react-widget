@@ -1,4 +1,4 @@
-import { configDef } from "./views/Home"
+import { configDef } from "./js/App"
 
 const defaultConfig:configDef = {
   title: "Agente conversacional",
