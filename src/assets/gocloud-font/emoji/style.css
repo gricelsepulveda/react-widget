@@ -1,0 +1,383 @@
+@font-face {
+  font-family: 'gc-font';
+  src:  url('fonts/gc-font.eot?ur9puv');
+  src:  url('fonts/gc-font.eot?ur9puv#iefix') format('embedded-opentype'),
+    url('fonts/gc-font.woff2?ur9puv') format('woff2'),
+    url('fonts/gc-font.ttf?ur9puv') format('truetype'),
+    url('fonts/gc-font.woff?ur9puv') format('woff'),
+    url('fonts/gc-font.svg?ur9puv#gc-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.gc-font {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'gc-font' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.emoji-01:before {
+  content: "\e94f";
+}
+.emoji-34:before {
+  content: "\e950";
+}
+.emoji-33:before {
+  content: "\e951";
+}
+.emoji-32:before {
+  content: "\e952";
+}
+.emoji-31:before {
+  content: "\e953";
+}
+.emoji-30:before {
+  content: "\e954";
+}
+.emoji-29:before {
+  content: "\e955";
+}
+.emoji-28:before {
+  content: "\e956";
+}
+.emoji-27:before {
+  content: "\e957";
+}
+.emoji-26:before {
+  content: "\e958";
+}
+.emoji-25:before {
+  content: "\e959";
+}
+.emoji-24:before {
+  content: "\e95a";
+}
+.emoji-23:before {
+  content: "\e95b";
+}
+.emoji-22:before {
+  content: "\e95c";
+}
+.emoji-21:before {
+  content: "\e95d";
+}
+.emoji-20:before {
+  content: "\e95e";
+}
+.emoji-19:before {
+  content: "\e95f";
+}
+.emoji-18:before {
+  content: "\e960";
+}
+.emoji-17:before {
+  content: "\e961";
+}
+.emoji-16:before {
+  content: "\e962";
+}
+.emoji-15:before {
+  content: "\e963";
+}
+.emoji-14:before {
+  content: "\e964";
+}
+.emoji-13:before {
+  content: "\e965";
+}
+.emoji-12:before {
+  content: "\e966";
+}
+.emoji-11:before {
+  content: "\e967";
+}
+.emoji-10:before {
+  content: "\e968";
+}
+.emoji-09:before {
+  content: "\e969";
+}
+.emoji-08:before {
+  content: "\e96a";
+}
+.emoji-07:before {
+  content: "\e96b";
+}
+.emoji-06:before {
+  content: "\e96c";
+}
+.emoji-05:before {
+  content: "\e96d";
+}
+.emoji-04:before {
+  content: "\e96e";
+}
+.emoji-03:before {
+  content: "\e96f";
+}
+.emoji-02:before {
+  content: "\e970";
+}
+.user_:before {
+  content: "\e930";
+}
+.phone:before {
+  content: "\e917";
+}
+.radio-empty:before {
+  content: "\e91b";
+}
+.radio-filled:before {
+  content: "\e91c";
+}
+.search:before {
+  content: "\e920";
+}
+.caret:before {
+  content: "\e904";
+}
+.details:before {
+  content: "\e908";
+}
+.down-arrow:before {
+  content: "\e90a";
+}
+.logo:before {
+  content: "\e911";
+}
+.menu:before {
+  content: "\e914";
+}
+.time:before {
+  content: "\e92c";
+}
+.up-arrow:before {
+  content: "\e92f";
+}
+.add:before {
+  content: "\e900";
+}
+.check:before {
+  content: "\e905";
+  color: #010101;
+}
+.close:before {
+  content: "\e906";
+}
+.error_:before {
+  content: "\e90c";
+}
+.help:before {
+  content: "\e90d";
+}
+.location:before {
+  content: "\e910";
+}
+.logout:before {
+  content: "\e912";
+}
+.settings:before {
+  content: "\e922";
+}
+.timer:before {
+  content: "\e92d";
+}
+.audio:before {
+  content: "\e902";
+}
+.bot:before {
+  content: "\e903";
+}
+.email:before {
+  content: "\e90b";
+}
+.idea:before {
+  content: "\e90e";
+}
+.instagram:before {
+  content: "\e90f";
+}
+.lost:before {
+  content: "\e913";
+}
+.messenger:before {
+  content: "\e915";
+}
+.pause:before {
+  content: "\e916";
+}
+.play:before {
+  content: "\e918";
+}
+.calendar:before {
+  content: "\e919";
+}
+.preview:before {
+  content: "\e91a";
+}
+.reply:before {
+  content: "\e91e";
+}
+.stop:before {
+  content: "\e925";
+}
+.whatsapp:before {
+  content: "\e932";
+}
+.agent:before {
+  content: "\e901";
+}
+.cursor:before {
+  content: "\e907";
+}
+.dialog:before {
+  content: "\e909";
+}
+.division .path1:before {
+  content: "\e93b";
+  color: rgb(1, 1, 1);
+}
+.division .path2:before {
+  content: "\e93c";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.division .path3:before {
+  content: "\e93d";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.minus:before {
+  content: "\e93e";
+}
+.refresh:before {
+  content: "\e91d";
+}
+.script_:before {
+  content: "\e91f";
+}
+.send:before {
+  content: "\e921";
+}
+.sms_:before {
+  content: "\e933";
+}
+.speech:before {
+  content: "\e923";
+}
+.stats_:before {
+  content: "\e924";
+}
+.table:before {
+  content: "\e926";
+}
+.trash:before {
+  content: "\e92e";
+}
+.update:before {
+  content: "\e93a";
+}
+.waiting:before {
+  content: "\e931";
+}
+.weight:before {
+  content: "\e939";
+}
+.uploadfile:before {
+  content: "\e934";
+  color: #000444;
+}
+.center-divisor:before {
+  content: "\e93f";
+}
+.left-divisor:before {
+  content: "\e940";
+}
+.multiply:before {
+  content: "\e941";
+}
+.right-divisor:before {
+  content: "\e942";
+}
+.chevron-left:before {
+  content: "\e935";
+}
+.chevron-down:before {
+  content: "\e936";
+}
+.chevron-right:before {
+  content: "\e937";
+}
+.chevron-up:before {
+  content: "\e938";
+}
+.target .path1:before {
+  content: "\e927";
+  color: rgb(0, 0, 0);
+}
+.target .path2:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.target .path3:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.target .path4:before {
+  content: "\e92a";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.target .path5:before {
+  content: "\e92b";
+  margin-left: -1em;
+  color: rgb(1, 1, 1);
+}
+.gc-icon_logo-upcom:before {
+  content: "\e943";
+}
+.gc-icon_link:before {
+  content: "\e944";
+}
+.gc-icon_things:before {
+  content: "\e945";
+}
+.gc-icon_toast-info:before {
+  content: "\e946";
+}
+.gc-icon_toast-ask:before {
+  content: "\e947";
+}
+.gc-icon_toast-alert:before {
+  content: "\e948";
+}
+.gc-icon_toast-error:before {
+  content: "\e949";
+}
+.gc-icon_toast-success:before {
+  content: "\e94a";
+}
+.gc-icon_toast-update:before {
+  content: "\e94b";
+}
+.gc-icon_toast-search:before {
+  content: "\e94c";
+}
+.gc-icon_toast-sent:before {
+  content: "\e94d";
+}
+.gc-icon_edit:before {
+  content: "\e94e";
+}
