@@ -10,7 +10,7 @@ export interface UploaderProps {
   checked: boolean,
   disabled: boolean,
   disabledMessage: string,
-  fileErrors: any[]
+  fileErrors: any[] | undefined 
 }
 
 const Uploader: React.FunctionComponent<UploaderProps> = (props) => {
@@ -19,7 +19,7 @@ const Uploader: React.FunctionComponent<UploaderProps> = (props) => {
   const [fileInside, setFileInside] = useState(false)
   const fileRef = useRef(null)
 
-  const handleChange = (event) => {
+  const handleChange = (event:any) => {
     props.onchange(event)
     if (event.target.value != ""){
       setFileInside(true)
@@ -32,6 +32,7 @@ const Uploader: React.FunctionComponent<UploaderProps> = (props) => {
   const handleDelete = () => {
     if (fileRef != null && fileRef.current != undefined){
       props.ondelete()
+      // @ts-ignore
       fileRef.current.value = ""
       setFileInside(false)
       setFileLoaded(false)

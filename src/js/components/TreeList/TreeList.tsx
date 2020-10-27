@@ -65,7 +65,7 @@ const TreeList:React.FunctionComponent<TreeListProps> = (props) => {
     <nav className="gc-treelist">
       <ul className="gc-treelist-folder-list" style={{marginLeft: "20px"}}>
       {
-        data.map((elem, index) => (
+        data.map((elem:any, index:number) => (
           TreeListElement(elem.name, elem.value,  `${elem.name.split(" ").join("")}_${index}`, elem.childrens)
         ))
       }

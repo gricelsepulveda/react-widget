@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "outDir": "./dist",
@@ -18,5 +17,5 @@
     "isolatedModules": true,
     "jsx": "react"
   },
-  "exclude": ["node_modules", "webpack.*.js"]
+  "exclude": ["src", "node_modules", "webpack.*.js"]
 }

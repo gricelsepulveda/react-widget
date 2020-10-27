@@ -25,6 +25,7 @@ export interface ChatbotWidgetProps {
   allowedTypes: string[] | undefined, //Indicar por tipos documents, images, media
 }
 
+// @ts-ignore
 export interface Message {
   text: string,
   timestamp: number,
@@ -285,7 +286,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     setMessages(updatedMessages)
   }
 
-  const toggleOpen = (source) => {
+  const toggleOpen = (source:any) => {
     if (source == 'navbar'){
       if (open == false){
         setOpen(!open)
@@ -301,17 +302,22 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
 
   const textAreaHeight = (mode:'increase' | 'reset') => {
     if (mode == 'increase'){
+      // @ts-ignore
       userTextbox.current.style.height = `${userTextbox.current.scrollHeight}px`
+      // @ts-ignore
       userTextboxWrapper .current.style.height = `${userTextbox.current.scrollHeight}px`
     }
     else {
+      // @ts-ignore
       userTextbox.current.style.height = "36px"
+      // @ts-ignore
       userTextboxWrapper.current.style.height = "36px"
+      // @ts-ignore
       userTextbox.current.value = userTextbox.current.defaultValue
     }
   }
 
-  const cleanText = (m) => {
+  const cleanText = (m:string) => {
     let cText:string[] = []
     let strgText:string
     m.split(' ').map(word => {
@@ -321,7 +327,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     return strgText
   }
 
-  const dialogGenerator = (message, user) => {
+  const dialogGenerator = (message:any, user:string) => {
     if (cleanText(message).length > 0){
       setMessages([...messages, {
         text: cleanText(message),
@@ -339,15 +345,18 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
   }
 
   const scrollBottom = () => {
+    // @ts-ignore
     dialogWrapper.current.scrollTop = dialogWrapper.current.scrollHeight
   }
 
-  const handleUserWritting = (e) => {
+  const handleUserWritting = (e:any) => {
     if(e.key == 'Enter'){
       e.preventDefault();
+      // @ts-ignore
       if (cleanText(userTextbox.current.value).length == 0){
         textAreaHeight('reset')
       }
+      // @ts-ignore
       dialogGenerator(userTextbox.current.value, 'human')
     }
     else{
@@ -379,7 +388,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     urlDownload.click()
   }
 
-  const handleUpload = (event) => {
+  const handleUpload = (event:any) => {
     if (event.target.value != ""){
       setFileUpload(true)
     }
@@ -394,6 +403,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
       scrollBottom()
     }
     open ? handleActive() : null
+    // @ts-ignore
   }, [props.open, open, messages.length, userTextbox.current != null ? userTextbox.current.value : null])
 
   const renderEmojiBar = () => {
@@ -465,8 +475,8 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     )
   }
 
-  const handleEmoji = (emo) => {
-    function hexToDec(hex) {
+  const handleEmoji = (emo:string) => {
+    function hexToDec(hex:string) {
       var result = 0, digitValue;
       hex = hex.toLowerCase();
       for (var i = 0; i < hex.length; i++) {
@@ -477,6 +487,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
     }
     console.log(emo.split('U+')[1])
     if (emo != ''){
+      // @ts-ignore
       userTextbox.current.value = `${userTextbox.current.value} ${String.fromCodePoint(hexToDec(emo.split('U+')[1]))}`
     }
   }
@@ -521,7 +532,11 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
           Enviar
         </button>
         <div style={{marginTop: '20px'}}/>
-        <p>*Acepta {props.allowedTypes.join(', ')} </p>
+        
+        <p>*Acepta {
+          // @ts-ignore
+          props.allowedTypes.join(', ')
+        } </p>
       </div>
     )
   }
@@ -644,14 +659,14 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                     render.type == 'card' ?
                     <div className='gc-chw-cards-wrapper'>
                       {
-                        render.toRender.cards.map((card, indCard) =>
+                        render.toRender.cards.map((card:any, indCard:number) =>
                           <div className="gc-chw-card" key={`card-${card.title}-${indCard}`}>
                             <div className="gc-chw-card-img" style={{backgroundImage: `url(${card.image})`}}/>
                             <p className="gc-chw-card-title">{card.title}</p>
                             <span className="gc-chw-card-description">{card.description}</span>
                             <div className="gc-chw-card-buttons-wrapper">
                               {
-                                card.buttons.map((btn, indBtn) => 
+                                card.buttons.map((btn:any, indBtn:number) => 
                                   <button
                                     type="button" 
                                     onClick={() => btn.action()}
@@ -672,7 +687,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                       <div className="gc-chw-list-img-gral" style={{backgroundImage: `url(${render.toRender.listImage})`}}/>
                       <div className="gc-chw-list-wrapper-list">
                         {
-                          render.toRender.list.map((list, indList) =>
+                          render.toRender.list.map((list:any, indList:number) =>
                             <div className="gc-chw-list" key={`list-${list.title}-${indList}`}>
                               <div className="gc-chw-list-info">
                                 <div className="gc-chw-list-info-wrapper">
@@ -680,7 +695,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                                   <span className="gc-chw-list-description">{list.description}</span>
                                   <div className="gc-chw-list-buttons-wrapper">
                                     {
-                                      list.buttons.map((btnList, indBtn) => 
+                                      list.buttons.map((btnList:any, indBtn:number) => 
                                         <button
                                           type="button" 
                                           onClick={() => btnList.action()}
@@ -703,7 +718,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                     : render.type == 'option' ?
                     <div className="gc-chw-options">
                       {
-                        render.toRender.options.map((opt, optIn) => 
+                        render.toRender.options.map((opt:any, optIn:number) => 
                           <div className={`gc-chw-option ${option == opt.value ? 'active' : ''}`} key={`${opt.value}-${optIn}`}>
                             <input className='gc-chw-option-input' onClick={() => setOption(opt.value)} value={opt.value} type="radio" name={opt}/>
                             <label className='gc-chw-option-label'>
@@ -724,7 +739,7 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                     : render.type == 'image' ?
                       <div className="gc-chw-image-wrapper">
                         {
-                          render.toRender.map((img, imgIn) => 
+                          render.toRender.map((img:any, imgIn:number) => 
                             <div 
                               key={`${img}-${imgIn}`}
                               className={`gc-chw-image-element ${render.toRender.length > 1 ? 'mini' : ''}`}
@@ -824,9 +839,12 @@ const ChatbotWidget:React.FunctionComponent<ChatbotWidgetProps> = (props) => {
                 style={{color: `#${props.colors[9]}`, backgroundColor: `#${props.colors[2]}`}}
                 className={`
                   gc-chw-btn _send 
-                  ${ userTextbox.current != null ? userTextbox.current.value == '' ? "disabled" : '' : ''}
+                  ${ // @ts-ignore
+                    userTextbox.current != null ? userTextbox.current.value == '' ? "disabled" : '' : ''}
                 `}
-                onClick={() => dialogGenerator(userTextbox.current.value, 'human')}>
+                onClick={
+                  // @ts-ignore
+                  () => dialogGenerator(userTextbox.current.value, 'human')}>
                   <i className="gc-font send"/>
                 </button>
               </div>
